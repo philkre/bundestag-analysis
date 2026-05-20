@@ -30,8 +30,6 @@ from pathlib import Path
 
 # ── Paths ──────────────────────────────────────────────────────────────────────
 BASE_DIR = Path(__file__).parent.parent
-IMG_DIR  = BASE_DIR / "output" / "img"
-IMG_DIR.mkdir(parents=True, exist_ok=True)
 
 PERIODS = [
     ("bundestag_2005_2009", "2005–09"),
@@ -53,6 +51,9 @@ VOTE_MAP = {"yes": 1.0, "no": -1.0}  # abstain / no_show → NaN
 
 # ── Party colours ──────────────────────────────────────────────────────────────
 LIGHT_MODE = len(sys.argv) > 1 and sys.argv[1] == "light"
+_theme  = "light" if LIGHT_MODE else "dark"
+IMG_DIR  = BASE_DIR / "output" / "img" / _theme
+IMG_DIR.mkdir(parents=True, exist_ok=True)
 
 with open(BASE_DIR / "config" / "party_colours.json") as f:
     party_color: dict = json.load(f)
@@ -435,8 +436,7 @@ fig.subplots_adjust(left=0.07, right=0.995, top=0.925, bottom=0.055,
                     wspace=0.06, hspace=0.22)
 
 # ── Save ──────────────────────────────────────────────────────────────────────
-suffix   = "_light" if LIGHT_MODE else ""
-out_path = IMG_DIR / f"mp_influence{suffix}.png"
+out_path = IMG_DIR / f"mp_influence.png"
 plt.savefig(out_path, dpi=300, bbox_inches="tight", pad_inches=0.15,
             facecolor=fig.get_facecolor())
 print(f"\nSaved → {out_path}")

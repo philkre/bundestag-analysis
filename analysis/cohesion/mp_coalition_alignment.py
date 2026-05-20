@@ -22,8 +22,6 @@ from pathlib import Path
 
 # ── Paths ──────────────────────────────────────────────────────────────────────
 BASE_DIR  = Path(__file__).parent.parent
-IMG_DIR   = BASE_DIR / "output" / "img"
-IMG_DIR.mkdir(parents=True, exist_ok=True)
 COLORS_F  = BASE_DIR / "config" / "party_colours.json"
 COAL_F    = BASE_DIR / "config" / "coalitions.json"
 
@@ -50,6 +48,9 @@ def canon(p): return ALIASES.get(p, p)
 
 # ── Theme ─────────────────────────────────────────────────────────────────────
 LIGHT_MODE = len(sys.argv) > 1 and sys.argv[1] == "light"
+_theme  = "light" if LIGHT_MODE else "dark"
+IMG_DIR  = BASE_DIR / "output" / "img" / _theme
+IMG_DIR.mkdir(parents=True, exist_ok=True)
 
 if LIGHT_MODE:
     T = dict(
@@ -250,8 +251,7 @@ for p in _legend_parties:
     _lx_disp = _nm.get_window_extent(renderer).x1
 
 # ── Save ──────────────────────────────────────────────────────────────────────
-suffix   = "_light" if LIGHT_MODE else ""
-out_path = IMG_DIR / f"mp_coalition_alignment{suffix}.png"
+out_path = IMG_DIR / f"mp_coalition_alignment.png"
 plt.savefig(out_path, format="png", dpi=300, bbox_inches="tight", pad_inches=0.15,
             facecolor=fig.get_facecolor())
 print(f"Saved → {out_path}")

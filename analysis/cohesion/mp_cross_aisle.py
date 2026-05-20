@@ -24,8 +24,6 @@ from pathlib import Path
 
 # ── Paths ──────────────────────────────────────────────────────────────────────
 BASE_DIR = Path(__file__).parent.parent
-IMG_DIR  = BASE_DIR / "output" / "img"
-IMG_DIR.mkdir(parents=True, exist_ok=True)
 COLORS_F = BASE_DIR / "config" / "party_colours.json"
 
 PERIODS = [
@@ -60,6 +58,9 @@ def canon(p): return ALIASES.get(p, p)
 
 # ── Theme ─────────────────────────────────────────────────────────────────────
 LIGHT_MODE = len(sys.argv) > 1 and sys.argv[1] == "light"
+_theme  = "light" if LIGHT_MODE else "dark"
+IMG_DIR  = BASE_DIR / "output" / "img" / _theme
+IMG_DIR.mkdir(parents=True, exist_ok=True)
 
 if LIGHT_MODE:
     T = dict(
@@ -242,8 +243,7 @@ fig.subplots_adjust(left=0.07, right=0.90, top=0.90, bottom=0.10,
                     hspace=0.45, wspace=0.35)
 
 # ── Save ──────────────────────────────────────────────────────────────────────
-suffix   = "_light" if LIGHT_MODE else ""
-out_path = IMG_DIR / f"mp_cross_aisle{suffix}.png"
+out_path = IMG_DIR / f"mp_cross_aisle.png"
 plt.savefig(out_path, dpi=300, bbox_inches="tight", pad_inches=0.2,
             facecolor=fig.get_facecolor())
 print(f"Saved → {out_path}")

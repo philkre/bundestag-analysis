@@ -31,8 +31,6 @@ from scipy.optimize import minimize_scalar
 
 # ── Paths ──────────────────────────────────────────────────────────────────────
 BASE_DIR = Path(__file__).parent.parent
-IMG_DIR  = BASE_DIR / "output" / "img"
-IMG_DIR.mkdir(parents=True, exist_ok=True)
 
 PERIODS = [
     ("bundestag_2005_2009", "2005–09"),
@@ -57,6 +55,9 @@ VOTE_MAP = {"yes": 1.0, "no": -1.0}   # abstain / no_show → NaN
 
 # ── Theme ─────────────────────────────────────────────────────────────────────
 LIGHT_MODE = len(sys.argv) > 1 and sys.argv[1] == "light"
+_theme  = "light" if LIGHT_MODE else "dark"
+IMG_DIR  = BASE_DIR / "output" / "img" / _theme
+IMG_DIR.mkdir(parents=True, exist_ok=True)
 if LIGHT_MODE:
     T = dict(bg="#ffffff", text="#1a1a1a", subtext="#555555",
              grid="#dddddd", zero="#aaaaaa", annot="#333333")
@@ -327,8 +328,7 @@ ax2.text(0, 1.06,
 fig.subplots_adjust(left=0.06, right=0.93, top=0.83, bottom=0.08, hspace=0.55)
 
 # ── Save ──────────────────────────────────────────────────────────────────────
-suffix   = "_light" if LIGHT_MODE else ""
-out_path = IMG_DIR / f"mp_ising{suffix}.png"
+out_path = IMG_DIR / f"mp_ising.png"
 plt.savefig(out_path, dpi=300, bbox_inches="tight", pad_inches=0.2,
             facecolor=fig.get_facecolor())
 print(f"\nSaved → {out_path}")

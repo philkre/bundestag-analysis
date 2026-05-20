@@ -16,6 +16,7 @@ from pathlib import Path
 # ── Config ────────────────────────────────────────────────────────────────────
 PERIOD     = sys.argv[1] if len(sys.argv) > 1 else "bundestag_2021_2025"
 LIGHT_MODE = len(sys.argv) > 2 and sys.argv[2] == "light"
+_theme  = "light" if LIGHT_MODE else "dark"
 
 # ── Theme ─────────────────────────────────────────────────────────────────────
 if LIGHT_MODE:
@@ -57,7 +58,7 @@ else:
     LIGHT_PARTY_OVERRIDES = {}
 BASE_DIR  = Path(__file__).parent.parent
 OUTPUT    = BASE_DIR / "output"
-IMG_DIR   = OUTPUT / "img"
+IMG_DIR   = OUTPUT / "img" / _theme
 IMG_DIR.mkdir(parents=True, exist_ok=True)
 
 DATA_DIR  = OUTPUT / PERIOD
@@ -407,7 +408,11 @@ if _coal:
 ax.text(title_x, 1.004, "Parties ranked by number of seats within each group",
         transform=ax.transAxes, color=T["subtext"],
         fontsize=7.5, va="top", ha="left", clip_on=False)
-suffix   = "_light" if LIGHT_MODE else ""
-out_path = IMG_DIR / f"{PERIOD}_mp_strip{suffix}.png"
+out_path = IMG_DIR / f"{PERIOD}_mp_strip.png"
 plt.savefig(out_path, format="png", dpi=300, bbox_inches="tight", facecolor=fig.get_facecolor())
 print(f"Saved → {out_path}")
+
+# Also save into the period's own data folder
+period_out = BASE_DIR / "output" / PERIOD / f"mp_strip_{_theme}.png"
+plt.savefig(period_out, format="png", dpi=300, bbox_inches="tight", facecolor=fig.get_facecolor())
+print(f"Saved → {period_out}")
