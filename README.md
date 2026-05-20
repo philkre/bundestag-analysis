@@ -8,14 +8,19 @@ Analysis of German parliamentary voting behaviour across six Bundestag periods (
 
 ---
 
-![Government–opposition κ dot plot](docs/img/kappa_dots_govoppo.png)
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="docs/img/network_dark.png">
+  <img src="docs/img/network_light.png" alt="Bundestag 2021–25 voting similarity network" width="100%">
+</picture>
+
+*Voting similarity network for the 2021–25 Bundestag. Edges connect MP pairs with κ > 0.15; edge color blends the two party colors.*
+
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="docs/img/kappa_dots_govoppo_dark.png">
+  <img src="docs/img/kappa_dots_govoppo_light.png" alt="Government–opposition κ dot plot" width="100%">
+</picture>
+
 *Each dot is one government–opposition MP pair, positioned by Cohen's κ and colored by opposition party.*
-
-![Coalition vs opposition κ distributions](docs/img/kappa_dist_split_coaloppo.png)
-*κ distributions for within-coalition and within-opposition pairs across all six periods.*
-
-![UMAP of MPs by voting similarity](docs/img/mp_umap.png)
-*UMAP embedding of all MPs based on their full pairwise κ profile.*
 
 ---
 
