@@ -70,7 +70,7 @@ def parse_args() -> argparse.Namespace:
     )
     parser.add_argument(
         "--party-colors",
-        default="party_colours.json",
+        default="config/party_colours.json",
         help="Path to JSON mapping party label -> color (hex or any matplotlib color).",
     )
     parser.add_argument(
