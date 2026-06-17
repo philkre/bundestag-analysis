@@ -4,7 +4,7 @@ Analysis of German parliamentary voting behaviour across six Bundestag periods (
 
 **Posts:**
 - [Is German Politics Becoming More Polarised?](https://philippkreiter.com/polarisation-in-german-politics/) — `analysis/cohesion/`
-- Reverse Ising model *(forthcoming)* — `analysis/ising/`
+- [The Great MP Theory - Do Bundestag Leaders Actually Influence Votes?](https://philippkreiter.com/bundestag_leaders_influencing_votes/) — `analysis/ising/`
 
 ---
 
