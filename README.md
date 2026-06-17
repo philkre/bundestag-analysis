@@ -9,8 +9,15 @@ Analysis of German parliamentary voting behaviour across six Bundestag periods (
 ---
 
 <picture>
+  <source media="(prefers-color-scheme: dark)" srcset="docs/img/plm_influence_dark.png">
+  <img src="docs/img/plm_influence_light.png" alt="PLM coupling vs majority alignment — Bundestag 2005–2029" width="100%">
+</picture>
+
+*Each dot is one MP. X: alignment with chamber majority. Y: PLM coupling strength (influence beyond party line). Chancellor highlighted with bold ring — consistently in the bottom 2–5% of coupling across all periods.*
+
+<picture>
   <source media="(prefers-color-scheme: dark)" srcset="docs/img/network_dark.png">
-  <img src="docs/img/network_light.png" alt="Bundestag 2021–25 voting similarity network" width="100%">
+  <img src="docs/img/network_light.png" alt="Bundestag 2021–25 voting similarity network" width="70%">
 </picture>
 
 *Voting similarity network for the 2021–25 Bundestag. Edges connect MP pairs with κ > 0.15; edge color blends the two party colors.*
