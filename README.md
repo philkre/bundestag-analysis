@@ -7,10 +7,12 @@ Analysis of German parliamentary voting behaviour across six Bundestag periods (
 - [The Great MP Theory - Do Bundestag Leaders Actually Influence Votes?](https://philippkreiter.com/bundestag_leaders_influencing_votes/) — `analysis/ising/`
 
 ---
-<picture>
-  <source media="(prefers-color-scheme: dark)" srcset="docs/img/network_dark.png">
-  <img src="docs/img/network_light.png" alt="Bundestag 2021–25 voting similarity network" width="80%">
-</picture>
+<p align="center">
+  <picture>
+    <source media="(prefers-color-scheme: dark)" srcset="docs/img/network_dark.png">
+    <img src="docs/img/network_light.png" alt="Bundestag 2021–25 voting similarity network" width="80%">
+  </picture>
+</p>
 
 *Voting similarity network for the 2021–25 Bundestag. Edges connect MP pairs with κ > 0.15; edge color blends the two party colors.*
 
